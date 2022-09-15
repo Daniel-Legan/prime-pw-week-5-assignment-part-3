@@ -10,19 +10,31 @@ function addToCollection(x, y, z) {
 function showCollection(album) {
     console.log('the number of albums in this collection is:', collection.length);
     for(let object of album) {
-        //console.log('TITLE by ARTIST, publushed in YEAR');
         console.log(object.title, 'by', object.artist, 'published in,', object.yearPublished);
     }
 }
 
-addToCollection('hello', 'beyonce', '2022');
-addToCollection('goodbye', 'gaga', '2018');
-addToCollection('tomorrow', 'potato', '2018');
-addToCollection('grape', 'letter', '2011');
-addToCollection('grape', 'apple', '2009');
-addToCollection('i love you', 'pear', '1967');
+function findByArtist(x) {
+    let array = [];
+    for(let i = 0; i < collection.length; i++) {
+        if(collection[i].artist === x) {
+            array.push(collection[i]);
+        }
+    }
+    return array;
+}
+
+addToCollection('hello', 'adele', '2015');
+addToCollection('fly as me', 'bruno mars', '2021');
+addToCollection('them changes', 'thundercat', '2017');
+addToCollection('funny thing', 'thundercat', '2020');
+addToCollection('redbone', 'childish gambino', '2016');
+addToCollection('the cure', 'lady gaga', '2017');
 
 console.log('the whole collection of albums:', collection);
 
 showCollection(collection);
-console.log(collection[0].title)
+
+console.log(findByArtist('thundercat'));
+console.log(findByArtist('lady gaga'));
+console.log(findByArtist('a potato'));
