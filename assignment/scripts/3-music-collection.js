@@ -28,9 +28,12 @@ function search(artist, year, trackName) {
     if(artist === undefined || year === undefined || trackName === undefined) {
         return collection;
     }
-    for(let i = 0; i < collection.length; i++) {
+    for(let i = 0; i < collection.length; i++) { //6
         if(artist === collection[i].artist && year === collection[i].yearPublished) {
-            array.push(collection[i]);
+            for(let j = 0; j < collection[i].tracks.length; j++) {
+                if(trackName === collection[i].tracks[j][0])
+                array.push(collection[i]);
+            }
         }
     }
     return array;
@@ -39,7 +42,7 @@ function search(artist, year, trackName) {
 const adele25Tracks = [['hello', 295], ['when we were young', 290], ['water under the bridge', 240]];
 
 addToCollection('25', 'adele', '2015', adele25Tracks);
-addToCollection('an evening with silk sonic', 'silk sonic', '2021');
+addToCollection('an evening with silk sonic', 'silk sonic', '2021', adele25Tracks);
 addToCollection('drunk', 'thundercat', '2017');
 addToCollection('it is what it is', 'thundercat', '2020');
 addToCollection('"awaken, my love!"', 'childish gambino', '2016');
@@ -54,6 +57,9 @@ console.log(findByArtist('lady gaga'));
 console.log(findByArtist('a potato'));
 
 console.log(search('adele', '2015', 'when we were young'));
+console.log(search('adele', '2015', 'hello'));
+console.log(search('adele', '2015', 'water under the bridge'));
+console.log(search('silk sonic', '2021', 'test'));
 console.log(search('adele', '2016')); //returns empy array
 console.log(search('adele')); //returns collection with only one input parameter
 console.log(search()); //returns collection with no input parameters
