@@ -8,8 +8,12 @@ function addToCollection(x, y, z, arr) {
 
 function showCollection(x) {
     console.log('the number of albums in this collection is:', x.length);
-    for(let object of x) {
-        console.log(object.title, 'by', object.artist, 'published in,', object.yearPublished + ':');
+    for(let album of x) {
+        console.log(album.title, 'by', album.artist, 'published in,', album.yearPublished + ':');
+        for(let i = 0; i < album.tracks.length; i++) {
+
+            console.log(i+1 + '. song: ' + album.tracks[i][0] + ', seconds: ' + album.tracks[i][1]);
+        }
     }
 }
 
@@ -40,13 +44,18 @@ function search(artist, year, trackName) {
 }
 
 const adele25Tracks = [['hello', 295], ['when we were young', 290], ['water under the bridge', 240]];
+const silkSonicAnEveningWithSilkSonicTracks = [['leave the door open', 244], ['fly as me', 216]];
+const thundercatDrunkTracks = [['friend zone', 192], ['them changes', 188], ['drunk', 102], ['lava lamp', 178]];
+const thundercatItIsWhatItIsTracks = [['dragonball durag', 189]];
+const childishGambinoAwakenMyLoveTracks = [['redbone', 326]];
+const ladyGagaChromaticaTracks = [['stupid love', 193], ['rain on me', 182], ['sour candy', 157]];
 
 addToCollection('25', 'adele', '2015', adele25Tracks);
-addToCollection('an evening with silk sonic', 'silk sonic', '2021', adele25Tracks);
-addToCollection('drunk', 'thundercat', '2017');
-addToCollection('it is what it is', 'thundercat', '2020');
-addToCollection('"awaken, my love!"', 'childish gambino', '2016');
-addToCollection('chromatica', 'lady gaga', '2020');
+addToCollection('an evening with silk sonic', 'silk sonic', '2021', silkSonicAnEveningWithSilkSonicTracks);
+addToCollection('drunk', 'thundercat', '2017', thundercatDrunkTracks);
+addToCollection('it is what it is', 'thundercat', '2020', thundercatItIsWhatItIsTracks);
+addToCollection('"awaken, my love!"', 'childish gambino', '2016', childishGambinoAwakenMyLoveTracks);
+addToCollection('chromatica', 'lady gaga', '2020', ladyGagaChromaticaTracks);
 
 console.log('the whole collection of albums:', collection);
 
@@ -54,26 +63,21 @@ showCollection(collection);
 
 console.log(findByArtist('thundercat'));
 console.log(findByArtist('lady gaga'));
-console.log(findByArtist('a potato'));
+console.log(findByArtist('a potato')); //returns empty array if not found
 
-console.log(search('adele', '2015', 'when we were young'));
+
 console.log(search('adele', '2015', 'hello'));
 console.log(search('adele', '2015', 'water under the bridge'));
-console.log(search('silk sonic', '2021', 'test'));
-console.log(search('adele', '2016')); //returns empy array
-console.log(search('adele')); //returns collection with only one input parameter
-console.log(search()); //returns collection with no input parameters
+console.log(search('silk sonic', '2021', 'song not in album'));
+console.log(search('adele', '2016')); //returns entire collection with only two input parameters
+console.log(search('adele')); //returns entire collection with only one input parameter
+console.log(search()); //returns entire collection with no input parameters
+
+//testing
 
 //console.log(collection[0].tracks[1][0]);
 //console.log(collection[0].tracks.length);
 
-
-
-
-
-
-
-//testing
 let me = {
     height: 72,
     sex: 'male',
