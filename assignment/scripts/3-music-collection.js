@@ -23,13 +23,13 @@ function findByArtist(x) {
     return array;
 }
 
-function search(x, y) {
+function search(artist, year, trackName) {
     let array = [];
-    if(y === undefined || x === undefined) {
+    if(artist === undefined || year === undefined || trackName === undefined) {
         return collection;
     }
-    for(i = 0; i < collection.length; i++) {
-        if(x === collection[i].artist && y === collection[i].yearPublished) {
+    for(let i = 0; i < collection.length; i++) {
+        if(artist === collection[i].artist && year === collection[i].yearPublished) {
             array.push(collection[i]);
         }
     }
@@ -53,10 +53,42 @@ console.log(findByArtist('thundercat'));
 console.log(findByArtist('lady gaga'));
 console.log(findByArtist('a potato'));
 
-console.log(search('adele', '2015'));
+console.log(search('adele', '2015', 'when we were young'));
 console.log(search('adele', '2016')); //returns empy array
 console.log(search('adele')); //returns collection with only one input parameter
 console.log(search()); //returns collection with no input parameters
 
 //console.log(collection[0].tracks[1][0]);
 //console.log(collection[0].tracks.length);
+
+
+
+
+
+
+
+//testing
+let me = {
+    height: 72,
+    sex: 'male',
+    favoriteOutfits: [['t-shirt', 'jeans'], ['sweatshirt','hoody'], ['suit', 'formal pants'], ['sweatshirt', 'poncho']]
+}
+
+function searchII(firstitem) {
+    let arr = [];
+    for(let i = 0; i < me.favoriteOutfits.length; i++) { //3
+        if(me.favoriteOutfits[i][0] === firstitem) {
+            arr.push(me.favoriteOutfits[i]);
+        }
+    }
+    return arr;
+}
+
+console.log(me);
+console.log(me.favoriteOutfits.length);
+
+for(let i = 0; i < me.favoriteOutfits.length; i++) {
+    console.log(me.favoriteOutfits[i][1]);
+}
+
+console.log(searchII('sweatshirt'));
