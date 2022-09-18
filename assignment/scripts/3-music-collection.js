@@ -11,7 +11,6 @@ function showCollection(x) {
     for(let album of x) {
         console.log(album.title, 'by', album.artist, 'published in,', album.yearPublished + ':');
         for(let i = 0; i < album.tracks.length; i++) {
-
             console.log(i+1 + '. song: ' + album.tracks[i][0] + ', seconds: ' + album.tracks[i][1]);
         }
     }
@@ -27,9 +26,9 @@ function findByArtist(x) {
     return array;
 }
 
-function search(artist, year, trackName) {
+function search(artist, year, trackName) { //not an object input parameter, my mistake
     let array = [];
-    if(artist === undefined || year === undefined || trackName === undefined) {
+    if(!artist || !year || !trackName) {
         return collection;
     }
     for(let i = 0; i < collection.length; i++) { //6
@@ -73,7 +72,7 @@ console.log(search('adele', '2016')); //returns entire collection with only two 
 console.log(search('adele')); //returns entire collection with only one input parameter
 console.log(search()); //returns entire collection with no input parameters
 
-//testing
+//testing section
 
 //console.log(collection[0].tracks[1][0]);
 //console.log(collection[0].tracks.length);
